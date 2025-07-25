@@ -21,6 +21,7 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  padding: 20px 0px;
 }
 
 .genreContainer {
@@ -73,7 +74,7 @@ img {
   font-weight: 500;
   color: gray;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -132,5 +133,27 @@ img {
 
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  /* Styles for tablets and smaller devices */
+  .genreContainer {
+    flex-wrap: wrap;
+  }
+
+  .stationsContainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stationContainer {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  img {
+    display: none;
   }
 }

@@ -13,18 +13,22 @@ export default function Stations() {
     const audioRefs = useRef<HTMLAudioElement[]>([]);
 
     const setupApi = async (genre: string) => {
+        // const api = new RadioBrowserApi('My Radio App');
         const api = new RadioBrowserApi('My Radio App');
+        api.setBaseUrl('https://de1.api.radio-browser.info');
+
         const stations = await api.searchStations({
             language: 'english',
             tag: genre,
             // country: country,
             limit: 30
         });
-
+        console.log(stations);
         return stations;
     };
 
     useEffect(() => {
+        // debugger
         setLoading(true);
         setupApi(genre)
             .then((data) => {
@@ -33,7 +37,6 @@ export default function Stations() {
             })
             .catch((error) => {
                 console.log(error);
-                alert(error.message);
             })
             .finally(() => setLoading(false));
     }, [genre]);
